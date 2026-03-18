@@ -1,0 +1,76 @@
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f172a; /* Azul bem escuro */
+    color: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background: #1e293b;
+}
+
+header h1 span { color: #3b82f6; }
+
+main {
+    flex: 1; /* Faz o main ocupar o espaço sobrando */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Layout dos Cards Lado a Lado */
+.grid-container {
+    display: flex;            /* Ativa o Flexbox */
+    justify-content: center;   /* Centraliza o grupo na tela */
+    align-items: center;       /* Alinha verticalmente */
+    gap: 20px;                 /* Dá espaço entre um card e outro */
+    flex-wrap: nowrap;         /* Força eles a ficarem na mesma linha */
+    padding: 50px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid #334155;
+}
+
+.card h3 { font-size: 0.9rem; color: #94a3b8; text-transform: uppercase; }
+
+.value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #3b82f6;
+}
+
+/* --- CLASSE ALERTA CRÍTICO --- */
+.alertacritico {
+    background-color: #450a0a !important; /* Fundo vermelho escuro */
+    border: 2px solid #ff0000 !important; /* Borda vermelha viva */
+    transition: all 0.3s ease;            /* Deixa a mudança suave */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    background: #1e293b;
+}
