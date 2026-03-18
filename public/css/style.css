@@ -1,76 +1,120 @@
-/* Reset básico */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Configurações Globais */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --primary-blue: #38bdf8;
+    --alert-red: #ef4444;
+    --text-color: #f8fafc;
+}
 
 body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f172a; /* Azul bem escuro */
-    color: #f1f5f9;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-header {
-    text-align: center;
-    padding: 2rem;
-    background: #1e293b;
-}
-
-header h1 span { color: #3b82f6; }
-
-main {
-    flex: 1; /* Faz o main ocupar o espaço sobrando */
-    display: flex;
-    justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Header com Animação */
+header h1 {
+    margin-top: 50px;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}
+
+header span {
+    color: var(--primary-blue);
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+/* Container dos Cards */
+.grid-container {
+    display: grid;
+    /* Cria 3 colunas de tamanhos iguais */
+    grid-template-columns: repeat(3, 1fr); 
+    /* Espaço entre os cards */
+    gap: 20px; 
+    /* Centraliza o grid na tela */
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* Layout dos Cards Lado a Lado */
-.grid-container {
-    display: flex;            /* Ativa o Flexbox */
-    justify-content: center;   /* Centraliza o grupo na tela */
-    align-items: center;       /* Alinha verticalmente */
-    gap: 20px;                 /* Dá espaço entre um card e outro */
-    flex-wrap: nowrap;         /* Força eles a ficarem na mesma linha */
-    padding: 50px;
+/* Ajuste para telas menores (celular) */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* No celular, fica um embaixo do outro */
+    }
 }
 
+/* Estilização dos Cards (Glassmorphism) */
 .card {
-    background: #1e293b;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
     padding: 30px;
-    border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s ease;
-    border: 1px solid #334155;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
-.card h3 { font-size: 0.9rem; color: #94a3b8; text-transform: uppercase; }
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 45px rgba(56, 189, 248, 0.2);
+}
 
-.value {
-    display: block;
-    font-size: 2.5rem;
+.card h3 {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 15px;
+}
+
+.card .value {
+    font-size: 2.8rem;
     font-weight: bold;
-    margin-top: 10px;
-    color: #3b82f6;
+    color: var(--primary-blue);
+    display: block;
+    transition: all 0.3s ease;
 }
 
-/* --- CLASSE ALERTA CRÍTICO --- */
+/* --- ANIMAÇÃO DE ALERTA CRÍTICO --- */
 .alertacritico {
-    background-color: #450a0a !important; /* Fundo vermelho escuro */
-    border: 2px solid #ff0000 !important; /* Borda vermelha viva */
-    transition: all 0.3s ease;            /* Deixa a mudança suave */
+    background: rgba(239, 68, 68, 0.2) !important;
+    border: 2px solid var(--alert-red) !important;
+    animation: pulse-red 1.5s infinite linear;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
+.alertacritico .value {
+    color: var(--alert-red) !important;
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+/* Keyframes para as animações */
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 footer {
-    text-align: center;
-    padding: 1rem;
+    margin-top: auto;
+    padding: 20px;
+    color: #64748b;
     font-size: 0.8rem;
-    background: #1e293b;
 }

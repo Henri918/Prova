@@ -10,19 +10,29 @@ Sistema de monitoramento em tempo real para servidores, desenvolvido como projet
 ## 📋 Árvore DOM do Projeto
 A estrutura hierárquica da interface segue o padrão abaixo:
 
-\`\`\`text
+\`\`\`
+Hierarquia da Árvore DOM - skyNode Solutions
+--------------------------------------------
 Document
-┗━━ <html>
-    ┣━━ <head> (Metadados e CSS)
-    ┗━━ <body>
-        ┣━━ <header> (Título skyNode)
-        ┣━━ <main>
-        ┃   ┗━━ <section class="grid-container">
-        ┃       ┣━━ <article id="card-cpu">
-        ┃       ┣━━ <article id="card-ram">
-        ┃       ┗━━ <article id="card-temp">
-        ┣━━ <footer> (Rodapé de status)
-        ┗━━ <script> (Lógica de Objetos)
+ └── <html>
+      ├── <head> (Metadados e Link CSS)
+      └── <body>
+           ├── <header>
+           │    └── <h1> "skyNode Solutions"
+           ├── <main>
+           │    └── <section id="monitor-grid">
+           │         ├── <article id="card-cpu">
+           │         │    ├── <h3> "CPU"
+           │         │    └── <span id="cpu" class="value">
+           │         ├── <article id="card-ram">
+           │         │    ├── <h3> "RAM"
+           │         │    └── <span id="ram" class="value">
+           │         └── <article id="card-temp">
+           │              ├── <h3> "Temperatura"
+           │              └── <span id="temp" class="value">
+           ├── <footer>
+           │    └── <p> "Monitoramento Real-Time"
+           └── <script src="js/dashboard.js">
 \`\`\`
 
 ## 🚀 Como Rodar o Projeto
@@ -30,18 +40,18 @@ Document
 Siga os passos abaixo para executar o sistema na sua máquina:
 
 1. **Clonar o repositório:**
-   \`\`\`bash
+   \`\`\`
    git clone <link-do-seu-repositorio>
    \`\`\`
 
 2. **Instalar as dependências:**
    (Isso vai ler o package.json e criar a pasta node_modules que ignoramos no git)
-   \`\`\`bash
+   \`\`\`
    npm install
    \`\`\`
 
 3. **Iniciar o servidor:**
-   \`\`\`bash
+   \`\`\`
    node server.js
    \`\`\`
 
