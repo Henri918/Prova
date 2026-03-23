@@ -1,3 +1,4 @@
+Autor:Henrique Augusto Medeiros
 # 🚀 skyNode Solutions - Server Monitor
 
 Sistema de monitoramento em tempo real para servidores, desenvolvido como projeto de estudo de Desenvolvimento de Sistemas (2º ano).
